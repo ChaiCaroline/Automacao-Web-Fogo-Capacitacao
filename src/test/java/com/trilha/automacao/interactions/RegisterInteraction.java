@@ -12,6 +12,7 @@ public class RegisterInteraction extends LoginPage {
     private NavPage navPage;
 
     public RegisterInteraction(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         this.waits = new Waits(driver);
         this.navPage = new NavPage(driver);
