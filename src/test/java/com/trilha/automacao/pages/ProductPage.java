@@ -1,16 +1,22 @@
 package com.trilha.automacao.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage {
 
+    public ProductPage(WebDriver driver){
+        PageFactory.initElements(driver, this);
+    }
+
     @FindBy(className = "name")
-    public static WebElement titleProduct;
+    public WebElement titleProduct;
 
     @FindBy(className = "price-container")
-    public static WebElement priceProduct;
+    public WebElement priceProduct;
 
     @FindBy(className = "btn btn-success btn-lg")
-    public static WebElement btnAddCar;
+    public WebElement btnAddCar;
 }

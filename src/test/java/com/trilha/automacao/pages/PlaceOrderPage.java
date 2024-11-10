@@ -1,29 +1,34 @@
 package com.trilha.automacao.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class PlaceOrderPage {
+    public PlaceOrderPage(WebDriver driver){
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(id = "name")
-    public static WebElement inputName;
+    public WebElement inputName;
 
     @FindBy(id = "country")
-    public static WebElement inputCountry;
+    public WebElement inputCountry;
 
     @FindBy(id = "city")
-    public static WebElement inputCity;
+    public WebElement inputCity;
 
     @FindBy(id = "card")
-    public static WebElement inputCard;
+    public WebElement inputCard;
 
     @FindBy(id = "month")
-    public static WebElement inputMonth;
+    public WebElement inputMonth;
 
     @FindBy(id = "year")
-    public static WebElement inputYear;
+    public WebElement inputYear;
 
     @FindBy(className = "sweet-alert")
-    public static WebElement modalSucess;
+    public WebElement modalSucess;
 
 }
