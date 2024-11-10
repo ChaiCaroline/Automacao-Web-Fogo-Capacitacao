@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
         features = "src/test/resources/features",
         glue = "com.trilha.automacao.steps",
         tags = "@register",
-        monochrome = true
+        monochrome = false
 )
 public class RunCucumberTest {
 }
