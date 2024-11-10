@@ -7,4 +7,7 @@ public class CartPage {
 
     @FindBy(className = "btn btn-success")
     public static WebElement btnBuy;
+
+    @FindBy(id = "totalp")
+    public static WebElement priceFinally;
 }
