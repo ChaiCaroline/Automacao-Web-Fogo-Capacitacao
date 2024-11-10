@@ -6,6 +6,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.trilha.automacao.steps.hooks.hook;
+import com.trilha.automacao.utils.Configuration;
 import io.cucumber.java.pt.*;
 
 public class StepDefinitions {
@@ -24,7 +25,7 @@ public class StepDefinitions {
 
     @Dado("que estou efetuando o teste")
     public void teste() {
-        hook.driver.get("https://www.saucedemo.com/");
+        Configuration.acessURL("https://www.saucedemo.com/");
         test.log(Status.PASS, "This is a logging event for MyFirstTest, and it passed!");
         test.assignDevice("Passou com sucesso");
 
