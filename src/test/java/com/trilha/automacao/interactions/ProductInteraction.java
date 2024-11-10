@@ -1,10 +1,10 @@
-package com.trilha.automacao.interations;
+package com.trilha.automacao.interactions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ProductInteration {
+public class ProductInteraction {
 
     private WebDriver driver;
 
