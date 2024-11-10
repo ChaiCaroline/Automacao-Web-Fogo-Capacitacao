@@ -8,8 +8,8 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com.trilha.automacao.steps",
-        tags = "@login",
-        monochrome = false
+        tags = "@register",
+        monochrome = true
 )
 public class RunCucumberTest {
 }
