@@ -10,8 +10,6 @@ public class PageObject {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public String urlBugBank = "https://bugbank.netlify.app/";
-
     public PageObject(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));

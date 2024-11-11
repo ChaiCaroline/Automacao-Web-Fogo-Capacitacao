@@ -8,7 +8,7 @@
 
       Dado que estou na página inicial
       Quando eu clicar em sign up
-      E inserir meu nome, 'Ricardo12' e '123' para cadastro
+      E inserir meu nome, 'Ricardo10' e '123' para cadastro
       E clicar novamente em sign up
       Então deve aparecer a mensagem 'Sign up successful.'
 
