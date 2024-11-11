@@ -2,11 +2,13 @@ package com.trilha.automacao.steps;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.trilha.automacao.asserts.BuyAssert;
 import com.trilha.automacao.interactions.CategoryInteraction;
 import com.trilha.automacao.interactions.NavegationInteraction;
 import com.trilha.automacao.interactions.ProductInteraction;
 import com.trilha.automacao.utils.Configuration;
 import io.cucumber.java.pt.*;
+import org.junit.Assert;
 
 import static com.trilha.automacao.utils.ExtentReport.extent;
 
@@ -16,11 +18,13 @@ public class BuyStep {
     private final CategoryInteraction categoryInteraction;
     private final ProductInteraction productInteraction;
     private final ExtentTest test;
+    private BuyAssert buyAssert;
 
     public BuyStep() {
         navegationInteraction = new NavegationInteraction(Configuration.getDriver());
         categoryInteraction = new CategoryInteraction(Configuration.getDriver());
         productInteraction = new ProductInteraction(Configuration.getDriver());
+        buyAssert = new BuyAssert(Configuration.getDriver());
 
         test = extent.createTest("Processo de Compra");
     }
@@ -39,17 +43,25 @@ public class BuyStep {
 
     @Quando("eu adiciono o produto ao carrinho")
     public void eu_adiciono_o_produto_ao_carrinho() {
+        productInteraction.addProductCart();
 
+        if(buyAssert.verifyAlert("Product added")){
+        test.log(Status.PASS, "Mensagem de Produto adicionado o produto ao carrinho exibido");
+        Assert.assertTrue(true);
+        }else {
+            test.log(Status.FAIL, "Mensagem de Produto adicionado o produto ao carrinho, não foi exibido");
+            Assert.fail();
+        }
+    }
+
+    @E("eu navego até a página do {string}")
+    public void eu_navego_até_a_página_do_carrinho(String navegacao) {
+        //navegationInteraction.clickButtonNav(navegacao);
     }
 
     @Então("o produto deve ser exibido no carrinho")
     public void o_produto_deve_ser_exibido_no_carrinho() {
 
-    }
-
-    @E("eu navego até a página do {string}")
-    public void eu_navego_até_a_página_do_carrinho(String navegacao) {
-        navegationInteraction.clickButtonNav(navegacao);
     }
 
     @E("eu verifico que todos os produtos adicionados estão corretos")

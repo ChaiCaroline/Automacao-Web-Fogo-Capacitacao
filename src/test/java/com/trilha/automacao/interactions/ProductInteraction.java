@@ -22,4 +22,8 @@ public class ProductInteraction extends ProductPage {
         waits.waitElement(xpathExpression);
         return driver.findElement(xpathExpression);
     }
+
+    public void addProductCart(){
+         waits.waitClick(btnAddCar).click();
+    }
 }
