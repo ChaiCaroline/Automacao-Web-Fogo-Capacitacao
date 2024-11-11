@@ -59,6 +59,7 @@ public class RegisterStep {
         }
 
         Assert.assertTrue(resultado);
+        extent.flush();
     }
 
 }
