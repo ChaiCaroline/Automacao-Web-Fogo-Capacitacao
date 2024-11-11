@@ -17,6 +17,6 @@ public class ProductPage {
     @FindBy(className = "price-container")
     public WebElement priceProduct;
 
-    @FindBy(className = "btn btn-success btn-lg")
+    @FindBy(css = ".btn.btn-success.btn-lg")
     public WebElement btnAddCar;
 }

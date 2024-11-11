@@ -49,4 +49,14 @@ public class Waits {
 
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
+    public WebElement waitElement(By element){
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(MAX_DURATION)
+                .pollingEvery(POOL_DURATION)
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
+
+        return wait.until(ExpectedConditions.presenceOfElementLocated(element));
+    }
 }
