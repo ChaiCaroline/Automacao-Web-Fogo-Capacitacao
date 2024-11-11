@@ -24,11 +24,6 @@ public class RegisterStep {
         test = extent.createTest("Registro de Usuário");
     }
 
-    @Dado("que estou na página inicial")
-    public void que_estou_na_pagina_inicial() {
-        Configuration.acessURL("https://www.demoblaze.com/index.html");
-        test.log(Status.INFO, "Navegou para a página inicial");
-    }
 
     @Quando("eu clicar em sign up")
     public void eu_clicar_em_sign_up() {
