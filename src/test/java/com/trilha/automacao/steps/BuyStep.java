@@ -3,12 +3,14 @@ package com.trilha.automacao.steps;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.trilha.automacao.asserts.BuyAssert;
+import com.trilha.automacao.interactions.CartInteraction;
 import com.trilha.automacao.interactions.CategoryInteraction;
 import com.trilha.automacao.interactions.NavegationInteraction;
 import com.trilha.automacao.interactions.ProductInteraction;
 import com.trilha.automacao.utils.Configuration;
 import io.cucumber.java.pt.*;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import static com.trilha.automacao.utils.ExtentReport.extent;
 
@@ -17,6 +19,7 @@ public class BuyStep {
     private final NavegationInteraction navegationInteraction;
     private final CategoryInteraction categoryInteraction;
     private final ProductInteraction productInteraction;
+    private final CartInteraction cartInteraction;
     private final ExtentTest test;
     private BuyAssert buyAssert;
 
@@ -24,9 +27,16 @@ public class BuyStep {
         navegationInteraction = new NavegationInteraction(Configuration.getDriver());
         categoryInteraction = new CategoryInteraction(Configuration.getDriver());
         productInteraction = new ProductInteraction(Configuration.getDriver());
+        cartInteraction = new CartInteraction(Configuration.getDriver());
         buyAssert = new BuyAssert(Configuration.getDriver());
 
         test = extent.createTest("Processo de Compra");
+    }
+
+    @Dado("que estou na página inicial")
+    public void que_estou_na_pagina_inicial() {
+        Configuration.acessURL("https://www.demoblaze.com/index.html");
+        test.log(Status.INFO, "Navegou para a página inicial");
     }
 
     @E("eu clico na categoria {string}")
@@ -44,10 +54,15 @@ public class BuyStep {
     @Quando("eu adiciono o produto ao carrinho")
     public void eu_adiciono_o_produto_ao_carrinho() {
         productInteraction.addProductCart();
+        test.log(Status.INFO, "Produto adicionado ao carrinho");
+    }
 
+    @Então("o produto deve ser exibido no carrinho")
+    public void o_produto_deve_ser_exibido_no_carrinho() {
         if(buyAssert.verifyAlert("Product added")){
-        test.log(Status.PASS, "Mensagem de Produto adicionado o produto ao carrinho exibido");
-        Assert.assertTrue(true);
+            productInteraction.acceptAlert();
+            test.log(Status.PASS, "Mensagem de Produto adicionado o produto ao carrinho exibido");
+            Assert.assertTrue(true);
         }else {
             test.log(Status.FAIL, "Mensagem de Produto adicionado o produto ao carrinho, não foi exibido");
             Assert.fail();
@@ -56,22 +71,26 @@ public class BuyStep {
 
     @E("eu navego até a página do {string}")
     public void eu_navego_até_a_página_do_carrinho(String navegacao) {
-        //navegationInteraction.clickButtonNav(navegacao);
+        navegationInteraction.clickButtonNav(navegacao);
+        test.log(Status.INFO, "Navegou até o menu "+navegacao);
     }
 
-    @Então("o produto deve ser exibido no carrinho")
-    public void o_produto_deve_ser_exibido_no_carrinho() {
+    @E("eu verifico se produto {string} foi adicionado ao carrinho")
+    public void eu_verifico_se_produto_foi_adicionado_ao_carrinho(String produto) {
 
-    }
-
-    @E("eu verifico que todos os produtos adicionados estão corretos")
-    public void eu_verifico_que_todos_os_produtos_adicionados_estão_corretos() {
-
+        if(cartInteraction.searchProductAdd(produto).isDisplayed()){
+            test.log(Status.PASS, "Produto no carrinho");
+            Assert.assertTrue(true);
+        }else {
+            test.log(Status.FAIL, "Produto informado não está no carrinho");
+            Assert.fail();
+        }
     }
 
     @Quando("eu finalizo a compra")
     public void eu_finalizo_a_compra() {
-
+        cartInteraction.clickButtonCart();
+        test.log(Status.INFO, "Clicou no botão placer order");
     }
 
     @E("eu insiro as informações de pagamento e envio corretamente")

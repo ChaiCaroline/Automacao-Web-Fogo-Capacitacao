@@ -11,7 +11,7 @@ public class CartPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(className = "btn btn-success")
+    @FindBy(css = ".btn.btn-success")
     public WebElement btnBuy;
 
     @FindBy(id = "totalp")
