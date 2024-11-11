@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com.trilha.automacao.steps",
-        tags = "@register",
+        tags = "@compra",
         monochrome = false
 )
 public class RunCucumberTest {
