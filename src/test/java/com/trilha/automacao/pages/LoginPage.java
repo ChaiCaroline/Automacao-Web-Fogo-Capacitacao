@@ -12,8 +12,11 @@ public class LoginPage {
     }
 
     @FindBy(id = "sign-username")
-    public WebDriver inputLogin;
+    public WebElement inputLogin;
 
     @FindBy(id = "sign-password")
     public WebElement inputSenha;
+
+    @FindBy(xpath = "//button[@class='btn btn-primary' and contains(text(), 'Sign up')]")
+    public WebElement btnSignUp;
 }

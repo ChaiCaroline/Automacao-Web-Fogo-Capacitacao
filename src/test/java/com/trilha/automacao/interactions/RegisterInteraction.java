@@ -18,7 +18,17 @@ public class RegisterInteraction extends LoginPage {
         this.navPage = new NavPage(driver);
     }
 
-    public void clickButtonSignUp(){
+    public void clickButtonSignUp(String button){
+
+        if(button.equals("menu")){
         waits.waitVisibily(navPage.btnSignUp).click();
+        }else if(button.equals("registro")){
+            btnSignUp.click();
+        }
+    }
+
+    public void RegisterUser(String username, String password){
+        waits.waitVisibily(inputLogin).sendKeys(username);
+        waits.waitVisibily(inputSenha).sendKeys(password);
     }
 }
