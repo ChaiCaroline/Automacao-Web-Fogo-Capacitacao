@@ -26,4 +26,8 @@ public class ProductInteraction extends ProductPage {
     public void addProductCart(){
          waits.waitClick(btnAddCar).click();
     }
+
+    public void acceptAlert(){
+        waits.waitAlertIsPresent().accept();
+    }
 }
