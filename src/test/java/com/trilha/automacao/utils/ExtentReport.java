@@ -9,7 +9,6 @@ public class ExtentReport {
     private static ExtentSparkReporter spark;
 
     public static void setupReport(){
-        // Configuração do ExtentReports
         if (extent == null) {
             extent = new ExtentReports();
             spark = new ExtentSparkReporter("target/Spark.html");
