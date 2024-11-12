@@ -9,11 +9,9 @@ import com.trilha.automacao.interactions.NavegationInteraction;
 import com.trilha.automacao.interactions.ProductInteraction;
 import com.trilha.automacao.utils.Configuration;
 import io.cucumber.java.pt.*;
-import net.datafaker.Faker;
 import org.junit.Assert;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import static com.trilha.automacao.utils.ExtentReport.extent;
 

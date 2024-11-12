@@ -5,9 +5,7 @@ import com.aventstack.extentreports.Status;
 import com.trilha.automacao.asserts.RegisterAssert;
 import com.trilha.automacao.interactions.RegisterInteraction;
 import com.trilha.automacao.utils.Configuration;
-import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.Então;
-import io.cucumber.java.pt.Quando;
+import io.cucumber.java.pt.*;
 import org.junit.Assert;
 import static com.trilha.automacao.utils.ExtentReport.extent;
 
