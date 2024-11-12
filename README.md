@@ -50,6 +50,8 @@ Funcionalidade: Realizar fluxo completo de compra
 
 A execução dos testes gera automaticamente um relatório que detalha cada etapa do fluxo de compra. Abaixo está uma captura de tela do relatório gerado:
 
+![image](https://github.com/user-attachments/assets/50505daf-ae3a-4bd6-bdd4-aa32f9f67ae5)
+
 ### Detalhes do Relatório
 
 - Status: Mostra se o teste passou (Pass) ou falhou (Fail).
