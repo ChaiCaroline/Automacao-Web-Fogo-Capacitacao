@@ -31,4 +31,7 @@ public class PlaceOrderPage {
     @FindBy(className = "sweet-alert")
     public WebElement modalSucess;
 
+    @FindBy(xpath = "//button[contains(@class, 'btn btn-primary')][contains(., 'Purchase')]")
+    public WebElement btnPurchase;
+
 }
