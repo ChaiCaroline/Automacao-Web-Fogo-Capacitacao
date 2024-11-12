@@ -28,6 +28,6 @@ public class CartInteraction extends CartPage {
     }
 
     public void clickButtonCart(){
-        waits.waitClick(btnBuy);
+        waits.waitClick(btnBuy).click();
     }
 }

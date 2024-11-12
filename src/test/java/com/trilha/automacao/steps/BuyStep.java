@@ -95,12 +95,19 @@ public class BuyStep {
 
     @E("eu insiro as informações de pagamento e envio corretamente")
     public void eu_insiro_as_informações_de_pagamento_e_envio_corretamente() {
-
+        productInteraction.formOrder("Chaiene", "Brasil", "Taubate", "51912838192", "12", "2026");
+        test.log(Status.INFO, "Preencheu o formulário, para finalizar o pedido");
     }
 
     @Então("a compra deve ser concluída com sucesso")
     public void a_compra_deve_ser_concluída_com_sucesso() {
-
+        if(buyAssert.verifyModalFinishBuy()){
+            test.pass("Pedido realizado com sucesso");
+        Assert.assertTrue(buyAssert.verifyModalFinishBuy());
+        }else {
+            test.fail("Teste falhou para finalizar o pedido");
+            Assert.fail();
+        }
         extent.flush();
     }
 }
