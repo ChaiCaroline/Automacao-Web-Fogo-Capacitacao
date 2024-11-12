@@ -9,8 +9,11 @@ import com.trilha.automacao.interactions.NavegationInteraction;
 import com.trilha.automacao.interactions.ProductInteraction;
 import com.trilha.automacao.utils.Configuration;
 import io.cucumber.java.pt.*;
+import net.datafaker.Faker;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 import static com.trilha.automacao.utils.ExtentReport.extent;
 
@@ -95,7 +98,8 @@ public class BuyStep {
 
     @E("eu insiro as informações de pagamento e envio corretamente")
     public void eu_insiro_as_informações_de_pagamento_e_envio_corretamente() {
-        productInteraction.formOrder("Chaiene", "Brasil", "Taubate", "51912838192", "12", "2026");
+        ArrayList<String> dados = productInteraction.formdados();
+        productInteraction.formOrder(dados.get(0), dados.get(1), dados.get(2), dados.get(3), dados.get(4), dados.get(5));
         test.log(Status.INFO, "Preencheu o formulário, para finalizar o pedido");
     }
 
